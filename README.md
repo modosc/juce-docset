@@ -2,7 +2,7 @@
 
 ## About
 
-A docset generator script for the [JUCE](https://github.com/julianstorer/JUCE)
+A docset generator script for the [JUCE](https://github.com/WeAreROLI/JUCE)
 library.
 
 The docset is available
