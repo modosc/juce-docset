@@ -2,7 +2,7 @@
 
 git submodule update --init
 
-cd juce/doxygen
+cd JUCE/doxygen
 sed -i.bak \
   -e 's/.*GENERATE_DOCSET.*= NO.*/GENERATE_DOCSET = YES/' \
   -e 's/.*DISABLE_INDEX.*= NO.*/DISABLE_INDEX = YES/' \
