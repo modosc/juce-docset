@@ -4,6 +4,7 @@ set +x
 
 if ! [ -x "$(xcode-select -print-path)/usr/bin/docsetutil" ]; then
   echo 'Error: docsetutil is not installed.' >&2
+  echo 'Try: sudo ln -s /Applications/DocSetUtil/Developer/usr/bin/docsetutil  $(xcode-select -print-path)/usr/bin/docsetutil' >&2
   exit 1
 fi
 
@@ -39,3 +40,8 @@ convert $iconPath -resize 16x16 JUCE.docset/Icon.png
 convert $iconPath -resize 32x32 JUCE.docset/Icon@2x.png
 
 tar --exclude='.DS_Store' -cvzf JUCE.tgz JUCE.docset
+
+# do git cleanup
+cd JUCE
+git clean -f -d
+git reset --hard origin/master
