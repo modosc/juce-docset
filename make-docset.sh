@@ -10,6 +10,8 @@ fi
 
 git submodule update --init
 
+git reset --hard origin/juce6
+
 rm -rf JUCE.docset
 rm -rf JUCE.tgz
 
@@ -35,13 +37,14 @@ make
 cp -r JUCE.docset ../../../
 cd ../../..
 
+mv JUCE.docset JUCE6.docset
 iconPath=JUCE/extras/Projucer/Source/BinaryData/Icons/juce_icon.png
-convert $iconPath -resize 16x16 JUCE.docset/Icon.png
-convert $iconPath -resize 32x32 JUCE.docset/Icon@2x.png
+convert $iconPath -resize 16x16 JUCE6.docset/Icon.png
+convert $iconPath -resize 32x32 JUCE6.docset/Icon@2x.png
 
-tar --exclude='.DS_Store' -cvzf JUCE.tgz JUCE.docset
+tar --exclude='.DS_Store' -cvzf JUCE6.tgz JUCE6.docset
 
 # do git cleanup
 cd JUCE
 git clean -f -d
-git reset --hard origin/master
+git reset --hard origin/juce6
