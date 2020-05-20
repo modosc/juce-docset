@@ -9,13 +9,12 @@ if ! [ -x "$(xcode-select -print-path)/usr/bin/docsetutil" ]; then
 fi
 
 git submodule update --init
-
-git reset --hard origin/juce6
+git submodule set-branch --branch juce-6 JUCE
 
 rm -rf JUCE.docset
 rm -rf JUCE.tgz
 
-cd JUCE/doxygen
+cd JUCE/docs/doxygen
 
 # make sure to use python3 when building
 sed -i.bak \
@@ -23,26 +22,30 @@ sed -i.bak \
   Makefile
 
 make clean
+doxygen -u
 sed -i.bak \
   -e 's/.*GENERATE_DOCSET.*= NO.*/GENERATE_DOCSET = YES/' \
   -e 's/.*DISABLE_INDEX.*= NO.*/DISABLE_INDEX = YES/' \
   -e 's/.*SEARCHENGINE.*= YES.*/SEARCHENGINE = NO/' \
   -e 's/.*GENERATE_TREEVIEW.*= YES.*/GENERATE_TREEVIEW = NO/' \
-  -e 's/.*HTML_HEADER.*=.*/HTML_HEADER = ..\/..\/header.html/' \
+  -e 's/.*HTML_HEADER.*=.*/HTML_HEADER = ..\/..\/..\/header.html/' \
   -e 's/.*DOCSET_BUNDLE_ID.*=.*/DOCSET_BUNDLE_ID = JUCE/' \
+  -e 's/.*PROJECT_NAME.*=.*/PROJECT_NAME = "JUCE 6.0.0.preview"/' \
+  -e 's/.*PROJECT_NUMBER.*=.*/PROJECT_NUMBER = 6.0.0.preview/' \
+  -e 's/.*PAPER_TYPE.*=.*/PAPER_TYPE = a4/' \
   Doxyfile
+
 make
 cd doc
 make
-cp -r JUCE.docset ../../../
-cd ../../..
+cp -r JUCE.docset ../../../../
+cd ../../../..
 
-mv JUCE.docset JUCE6.docset
 iconPath=JUCE/extras/Projucer/Source/BinaryData/Icons/juce_icon.png
-convert $iconPath -resize 16x16 JUCE6.docset/Icon.png
-convert $iconPath -resize 32x32 JUCE6.docset/Icon@2x.png
+convert $iconPath -resize 16x16 JUCE.docset/Icon.png
+convert $iconPath -resize 32x32 JUCE.docset/Icon@2x.png
 
-tar --exclude='.DS_Store' -cvzf JUCE6.tgz JUCE6.docset
+tar --exclude='.DS_Store' -cvzf JUCE.tgz JUCE.docset
 
 # do git cleanup
 cd JUCE
