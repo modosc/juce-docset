@@ -44,6 +44,8 @@ cd ../../../..
 iconPath=JUCE/extras/Projucer/Source/BinaryData/Icons/juce_icon.png
 convert $iconPath -resize 16x16 JUCE.docset/Icon.png
 convert $iconPath -resize 32x32 JUCE.docset/Icon@2x.png
+plutil -replace DashDocSetFamily -string juce JUCE.docset/Contents/Info.plist
+plutil -replace DocSetPlatformFamily -string juce JUCE.docset/Contents/Info.plist
 
 tar --exclude='.DS_Store' -cvzf JUCE.tgz JUCE.docset
 
