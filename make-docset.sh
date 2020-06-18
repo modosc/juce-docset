@@ -30,8 +30,8 @@ sed -i.bak \
   -e 's/.*GENERATE_TREEVIEW.*= YES.*/GENERATE_TREEVIEW = NO/' \
   -e 's/.*HTML_HEADER.*=.*/HTML_HEADER = ..\/..\/..\/header.html/' \
   -e 's/.*DOCSET_BUNDLE_ID.*=.*/DOCSET_BUNDLE_ID = JUCE/' \
-  -e 's/.*PROJECT_NAME.*=.*/PROJECT_NAME = "JUCE 6.0.0.preview1"/' \
-  -e 's/.*PROJECT_NUMBER.*=.*/PROJECT_NUMBER = 6.0.0.preview1/' \
+  -e 's/.*PROJECT_NAME.*=.*/PROJECT_NAME = "JUCE 6.0.0.preview2"/' \
+  -e 's/.*PROJECT_NUMBER.*=.*/PROJECT_NUMBER = 6.0.0.preview2/' \
   -e 's/.*PAPER_TYPE.*=.*/PAPER_TYPE = a4/' \
   -e 's/.*MAX_DOT_GRAPH_DEPTH.*=.*/MAX_DOT_GRAPH_DEPTH = 0/' \
   -e 's/.*DOT_GRAPH_MAX_NODES.*=.*/DOT_GRAPH_MAX_NODES = 200/' \
