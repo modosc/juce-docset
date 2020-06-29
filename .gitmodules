@@ -1,4 +1,4 @@
 [submodule "JUCE"]
 	path = JUCE
 	url = https://github.com/WeAreROLI/JUCE.git
-	branch = juce-6
+	branch = master
