@@ -14,7 +14,8 @@ rm -rf JUCE.docset
 rm -rf JUCE.tgz
 
 cd JUCE
-JUCE_VERSION=$(git tag|tail -n1)
+JUCE_VERSION=${JUCE_VERSION:-$(git tag|tail -n1)}
+echo "building for v${JUCE_VERSION}"
 
 cd docs/doxygen
 
